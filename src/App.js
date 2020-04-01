@@ -39,6 +39,8 @@ function App() {
       ))}
 
       <Carrito 
+        carrito={carrito}
+        setProducto={setProducto}
       />
 
       <Footer

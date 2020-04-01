@@ -13,14 +13,30 @@ const Producto = ({producto, productos, setProducto, carrito}) => {
         ]);
     }
 
+    // Quitar producto del carrito
+    const quitProduct = (id) => {
+        const newCarrito = carrito.filter(producto => producto.id !== id);
+        setProducto(
+            newCarrito
+        );
+    }
+
     return(
         <div>
             <h3>{nombre}</h3>
             <h5>${precio}</h5>
-            <button
-                type='button'
-                onClick={ () => selectProduct(id) }
-            >Comprar</button>
+            {productos
+                ?
+                    <button
+                        type='button'
+                        onClick={ () => selectProduct(id) }
+                    >Comprar</button>
+                :
+                    <button
+                        type='button'
+                        onClick={ () => quitProduct(id) }
+                    >Eliminar</button>
+            }
         </div>
     
     );
